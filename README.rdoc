@@ -1,0 +1,35 @@
+= Context
+
+Context is a content management system for Rails 3.
+
+== Overview
+
+The rationale behind Context is that you can add it to any existing Rails 3 application without having to rewrite your rails application, change your authentication methods or rewrite your routes.
+
+The other important thing of context is that it separates presentation from content.  Templates and stylesheets are kept in the source control repository.  Only actual editable content is stored in the database.
+
+The idea is that context provides a non intrusive way for clients to get custom data into the rails app as well as provide them with a way to update that data.
+
+== Requirements
+
+* Rails 3
+
+== Usage
+
+Context uses Rails 3 engines and so only works with Rails 3.
+
+You instal context through adding the gem to your gemfile:
+
+  gem "context"
+
+Once you bundle install, you will need to run the context generator:
+
+  rails generate context
+
+This will create the database tables needed for context to work, you can edit these, if you do need to change the table name, be sure to update config/initializers/context.rb with the new table names.  Once done:
+
+  rake db:migrate
+
+And then you can fire up your rails server and can navigate to /admin/context/
+
+
