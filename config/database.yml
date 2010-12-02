@@ -1,0 +1,18 @@
+development: &DEVELOPMENT
+  adapter: postgresql
+  database: context_development
+  encoding: unicode
+  pool: 15
+  username: postgres
+  password:
+
+test: &TEST
+  adapter: postgresql
+  database: context_test
+  encoding: unicode
+  pool: 15
+  username: postgres
+  password:
+
+cucumber:
+  <<: *TEST
