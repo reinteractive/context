@@ -3,12 +3,16 @@
   <head>
     <title><%= @title || "Context" %></title>
     <%= stylesheet_link_tag :defaults %>
+    <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
   <head>
   <body>
+    <div id="menu">
+      <%= link_to 'Snippets', snippets_path %>
+    </div>
+
     <%= yield %>
 
-    <%= javascript_include_tag :defaults %>
     <%= yield :bottom_javascript %>
   </body>
 <html>

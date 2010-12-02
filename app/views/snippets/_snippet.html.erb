@@ -1,0 +1,8 @@
+<li class="snippet <%= snippet.root? ? 'root' : nil %>">
+  <%= link_to snippet.name, edit_snippet_path(snippet) %>
+  <% if !snippet.children.empty? then -%>
+    <ul class="child_snippets">
+      <%= render :partial => :snippet, :collection => snippet.children %>
+    </ul>
+  <% end -%>
+</li>
