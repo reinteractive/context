@@ -1,13 +1,10 @@
-require File.expand_path('../boot', __FILE__)
+# This file kicks off the entire Context Engine
+# 
+require 'context/helpers'
 
-require 'rails/all'
-
-# If you have a Gemfile, require the gems listed there, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Context
-  class Application < Rails::Application
+  class Engine < Rails::Engine
     config.action_view.stylesheet_expansions[:defaults] = ['reset', 'ui.layout']
     config.action_view.javascript_expansions[:defaults] = ['jquery', 'rails']
     config.time_zone = 'UTC'
@@ -16,7 +13,7 @@ module Context
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/vendor/plugins)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -41,6 +38,16 @@ module Context
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    #config.filter_parameters += [:password]
+
+    initializer 'context.helper' do |app|
+      ActionView::Base.send :include, Context::ContextHelper
+    end
+
+    #initializer 'context.controller' do |app|
+    #  ActiveSupport.on_load(:action_controller) do
+    #    include MyEngineActionControllerExtension  
+    #  end
+    #end
   end
 end
