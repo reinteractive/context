@@ -2,7 +2,6 @@
 # 
 require 'context/helpers'
 
-
 module Context
   class Engine < Rails::Engine
     config.action_view.stylesheet_expansions[:defaults] = ['reset', 'ui.layout']

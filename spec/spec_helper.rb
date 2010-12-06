@@ -9,9 +9,13 @@ require 'faker'
 require 'sham'
 require 'digest/sha1'
 
+# NOTE: Don't use Rails.root, as it's the path to spec/dummy in this entire sequence...
+#       So, work out what our engine's root is...
+ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each {|f| require f}
 
 # Run any available migration
 ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
@@ -27,7 +31,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{ENGINE_RAILS_ROOT}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
