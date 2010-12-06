@@ -10,6 +10,9 @@ group :development do
 end
 
 group :test do
+  # For Dummy application
+  gem 'sqlite3-ruby'
+
   gem 'capybara',             "~> 0.3.9"
   gem "capybara-envjs",       "~> 0.1.6"
   gem 'database_cleaner',     "~> 0.5.2"
