@@ -3,9 +3,6 @@ require 'context/helpers'
 
 module Context
   class Engine < Rails::Engine
-
-    engine_name :context
-
     config.action_view.stylesheet_expansions[:defaults] = ['reset', 'ui.layout']
     config.action_view.javascript_expansions[:defaults] = ['jquery', 'rails']
     config.time_zone = 'UTC'
