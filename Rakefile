@@ -1,9 +1,12 @@
 #!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
-#require File.expand_path('../config/environment', __FILE__)
-#
-#Context::Engine.load_tasks
 require 'bundler'
+require File.expand_path('../config/boot', __FILE__)
+require File.expand_path('../config/environment', __FILE__)
 Bundler::GemHelper.install_tasks
+
+CONTEXT_ROOT=Context::Engine.root
+# Load up all the Rake tasks that we provide to users
+#Context::Engine.load_tasks
+
+# Load up all the Rake tasks that we provide to context developers
+Dir["#{CONTEXT_ROOT}/lib/tasks/*.rake"].sort.each { |ext| load ext }
