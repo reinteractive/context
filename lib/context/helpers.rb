@@ -3,7 +3,7 @@ module ContextHelper
 
   # TODO: Write and document
   def context(snippet_name, options={})
-    snippet=Snippet.find_by_name(snippet_name)
+    snippet=Context::Snippet.find_by_name(snippet_name)
     if snippet.blank? then
       "SNIPPET NOT FOUND: #{snippet_name}"
     else

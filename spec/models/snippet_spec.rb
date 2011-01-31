@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Snippet do
+describe Context::Snippet do
   before(:each) do
-    @snippet=Snippet.create!(:name => 'test', :body => 'I am a call to context!')
+    @snippet=Context::Snippet.create!(:name => 'test', :body => 'I am a call to context!')
   end
 
   describe ".to_html" do
