@@ -1,6 +1,6 @@
 require 'rubygems'
 
-# Set up gems listed in the Gemfile.
+# Set up gems listed in the top level (context) Gemfile, rather than this app's Gemfile
 gemfile = File.expand_path('../../../../Gemfile', __FILE__)
 begin
   ENV['BUNDLE_GEMFILE'] = gemfile
