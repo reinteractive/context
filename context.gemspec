@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'rails', '~>3.0'
+  s.add_dependency 'awesome_nested_set'
 
   # For Dummy application
   s.add_development_dependency 'sqlite3-ruby'

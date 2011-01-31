@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     context (0.0.1)
+      awesome_nested_set
       rails (~> 3.0)
 
 GEM
@@ -38,6 +39,8 @@ GEM
     arel (2.0.6)
     autotest-rails (4.1.0)
       ZenTest
+    awesome_nested_set (1.4.3)
+      activerecord (>= 1.1)
     builder (2.1.2)
     capybara (0.3.9)
       culerity (>= 0.2.4)
