@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resources :snippets
 
-  root :to => 'home#index'
+  # TODO: Probably remove these down the track???
+  namespace :context do
+    resource :pages
+    match "drafts/*path", :to => 'context/pages#show'
+  end
+
+  match '*path', :to => 'context/pages#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
