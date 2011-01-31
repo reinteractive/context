@@ -32,4 +32,8 @@ This will create the database tables needed for context to work, you can edit th
 
 And then you can fire up your rails server and can navigate to /admin/context/
 
+== Development
 
+The tests all use a local sqlite3 database in a Rails 3.0.3 application. Run the test suite like so:
+
+  rake spec
