@@ -35,10 +35,8 @@ begin
     desc 'Run all features'
     task :all => [:ok, :wip]
   end
-  desc 'Alias for cucumber:ok'
-  task :cucumber => 'cucumber:ok'
-
-  task :default => :cucumber
+  desc "Sets up the environment and runs cucumber:ok"
+  task :cucumber => [ 'test:db:copy_migrations', 'test:db:migrate', 'cucumber:ok' ]
 
   task :features => :cucumber do
     STDERR.puts "*** The 'features' task is deprecated. See rake -T cucumber ***"
