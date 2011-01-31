@@ -3,6 +3,10 @@ class PagesController < Context::ApplicationController
   before_filter :find_page_by_slug
 
   def show
+    respond_to do |format|
+      format.html { render :text => @page.to_html }
+      # TODO: Provide to_xml, to_json, etc.
+    end
   end
 
 private

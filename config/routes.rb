@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     match "drafts/*path", :to => 'context/pages#show'
   end
 
+  root :to => 'context/pages#show'
   match '*path', :to => 'context/pages#show'
 
   # The priority is based upon order of creation:

@@ -9,7 +9,8 @@ describe "Pages" do
     visit "/test_page"
     page.body.should_not be_blank
     page.body.should =~ /body/
-    page.body.should =~ /div/
+    # Make sure we are in the application layout
+    page.body.should =~ /Context Test Layout/
     page.body.should =~ /I am a test page!/
   end
 
@@ -17,7 +18,8 @@ describe "Pages" do
     visit "/a_missing_test_page"
     page.body.should_not be_blank
     page.body.should =~ /body/
-    page.body.should =~ /div/
+    # Make sure we are in the application layout
+    page.body.should =~ /Context Test Layout/
     page.body.should =~ /doesn't exist any more/
   end
 end
