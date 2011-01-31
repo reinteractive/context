@@ -7,7 +7,8 @@ class PagesController < Context::ApplicationController
 
 private
   def find_page_by_slug
-    @page=Page.find_by_slug(params[:path])
+    @slug=params[:path]
+    @page=Page.find_by_slug(@slug)
     if @page.blank? then
       render :action => '404'
       return false

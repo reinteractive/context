@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # TODO: Probably remove these down the track???
   namespace :context do
-    resource :pages
+    resource :pages, :except => :show
     match "drafts/*path", :to => 'context/pages#show'
   end
 
