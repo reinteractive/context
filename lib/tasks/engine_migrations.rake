@@ -7,7 +7,7 @@ namespace :test do
 
     desc "Migrates spec/dummy application"
     task :migrate do
-      system "cd #{CONTEXT_ROOT}/spec/dummy; rake db:migrate"
+      system "cd #{CONTEXT_ROOT}/spec/dummy; rake db:migrate db:test:prepare"
     end
   end
 end
