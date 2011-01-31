@@ -4,7 +4,8 @@ class PagesController < Context::ApplicationController
 
   def show
     respond_to do |format|
-      format.html { render :text => @page.to_html }
+      # TODO: This should eventually be able to be customized from the subclass
+      format.html { render :text => @page.to_html, :layout => @page.layout }
       # TODO: Provide to_xml, to_json, etc.
     end
   end

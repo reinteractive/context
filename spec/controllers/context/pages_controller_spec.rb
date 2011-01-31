@@ -19,6 +19,7 @@ describe Context::PagesController do
     it "renders the 404 page when Page can't be found" do
       Context::Page.should_receive(:find_by_slug).with('foo/bar').and_return(nil)
       get :show, :path => 'foo/bar'
+      assigns(:slug).should eq('foo/bar')
       response.should render_template("404")
     end
   end
