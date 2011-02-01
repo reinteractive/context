@@ -10,17 +10,17 @@ describe Context::PagesController do
 
   describe "GET show" do
     it "assigns the page when it is found by path" do
-      page=mock_page(:title => 'Foo/Bar Page')
+      page=Context::Page.create(:name => 'Foo/Bar Page')
       Context::Page.should_receive(:find_by_path).with('foo/bar').and_return(page)
       get :show, :path => 'foo/bar'
       assigns(:page).should eq(page)
     end
 
-    it "renders the 404 page when Page can't be found" do
+    it "raises a common 404 exception when the Page can't be found" do
       Context::Page.should_receive(:find_by_path).with('foo/bar').and_return(nil)
-      get :show, :path => 'foo/bar'
-      assigns(:path).should eq('foo/bar')
-      response.should render_template("404")
+      lambda {
+        get :show, :path => 'foo/bar'
+      }.should raise_exception(AbstractController::ActionNotFound)
     end
   end
 end

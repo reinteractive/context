@@ -24,11 +24,9 @@ describe "Pages" do
     page.body.should =~ /I am a test page!/
   end
 
-  it "should render a 404 when there Page can't be found" do
-    visit "/a_missing_test_page"
-    page.body.should_not be_blank
-    # Make sure we are in the application layout
-    page.body.should =~ /Context Test Layout/
-    page.body.should =~ /doesn't exist any more/
+  it "should raise the normal 404 when the Page can't be found" do
+    lambda {
+      visit "/a_missing_test_page"
+    }.should raise_exception(AbstractController::ActionNotFound)
   end
 end
