@@ -9,17 +9,17 @@ describe Context::PagesController do
   end
 
   describe "GET show" do
-    it "assigns the page when it is found by slug" do
+    it "assigns the page when it is found by path" do
       page=mock_page(:title => 'Foo/Bar Page')
-      Context::Page.should_receive(:find_by_slug).with('foo/bar').and_return(page)
+      Context::Page.should_receive(:find_by_path).with('foo/bar').and_return(page)
       get :show, :path => 'foo/bar'
       assigns(:page).should eq(page)
     end
 
     it "renders the 404 page when Page can't be found" do
-      Context::Page.should_receive(:find_by_slug).with('foo/bar').and_return(nil)
+      Context::Page.should_receive(:find_by_path).with('foo/bar').and_return(nil)
       get :show, :path => 'foo/bar'
-      assigns(:slug).should eq('foo/bar')
+      assigns(:path).should eq('foo/bar')
       response.should render_template("404")
     end
   end

@@ -1,6 +1,6 @@
 module Context
 class PagesController < Context::ApplicationController
-  before_filter :find_page_by_slug
+  before_filter :find_page_by_path
 
   def show
     respond_to do |format|
@@ -11,9 +11,9 @@ class PagesController < Context::ApplicationController
   end
 
 private
-  def find_page_by_slug
-    @slug=params[:path]
-    @page=Page.find_by_slug(@slug)
+  def find_page_by_path
+    @path=params[:path]
+    @page=Page.find_by_path(@path)
     if @page.blank? then
       render :action => '404'
       return false

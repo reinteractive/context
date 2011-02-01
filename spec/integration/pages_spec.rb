@@ -15,7 +15,7 @@ describe "Pages" do
 
   it "should render with a custom layout if set by the subclass" do
     @page.should_receive(:layout).and_return('custom')
-    Context::Page.should_receive(:find_by_slug).with('test_page').and_return(@page)
+    Context::Page.should_receive(:find_by_path).with('test_page').and_return(@page)
     visit "/test_page"
     page.body.should_not be_blank
     # Make sure we are in the custom layout
