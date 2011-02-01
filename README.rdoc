@@ -13,6 +13,7 @@ The idea is that context provides a non intrusive way for clients to get custom 
 == Requirements
 
 * Rails 3
+* FreadyDazio's fork of awesome_nested_set for Rails 3 at https://github.com/FreakyDazio/awesome_nested_set.git
 
 == Usage
 

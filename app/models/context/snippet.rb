@@ -1,6 +1,5 @@
-require 'awesome_nested_set'
 class Context::Snippet < ActiveRecord::Base
-  # acts_as_nested_set
+  acts_as_nested_set
 
   # Returns the body in HTML format, based upon the format field.
   def to_html
