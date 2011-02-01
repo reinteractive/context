@@ -9,4 +9,4 @@ CONTEXT_ROOT=Context::Engine.root
 #Context::Engine.load_tasks
 
 # Load up all the Rake tasks that we provide to context developers
-Dir["#{CONTEXT_ROOT}/lib/tasks/*.rake"].sort.each { |ext| load ext }
+Dir["#{CONTEXT_ROOT}/tasks/*.rake"].sort.each { |ext| load ext }
