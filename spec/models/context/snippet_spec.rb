@@ -5,6 +5,12 @@ describe Context::Snippet do
     @snippet=Context::Snippet.create!(:name => 'test', :body => 'I am a call to context!')
   end
 
+  describe ".to_s" do
+    it "should alias .to_html" do
+      @snippet.to_s.should === @snippet.to_html
+    end
+  end
+
   describe ".to_html" do
     it "should return the body as html unsafe when format is 'text/plain'" do
       @snippet.format='text/plain'

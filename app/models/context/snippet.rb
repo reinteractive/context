@@ -11,6 +11,7 @@ class Context::Snippet < ActiveRecord::Base
       self.body
     end
   end
+  alias :to_s :to_html
 
   # Returns true if format identifies the content as HTML
   def is_html?
