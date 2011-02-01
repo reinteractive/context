@@ -29,4 +29,10 @@ describe "Pages" do
       visit "/a_missing_test_page"
     }.should raise_exception(AbstractController::ActionNotFound)
   end
+
+  it "should use Context::Configuration.page_show_template_path to render a different view template" do
+    Context::Configuration.should_receive(:page_show_template_path).twice.and_return(File.join(Rails.root, 'app', 'views', 'test', 'custom_show.html.erb'))
+    visit "/test_page"
+    page.body.should =~ /CUSTOM VIEW TEMPLATE/
+  end
 end

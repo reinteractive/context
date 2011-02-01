@@ -1,4 +1,5 @@
 require 'rails'
+require 'context/configuration'
 require 'context/helpers'
 
 module Context
