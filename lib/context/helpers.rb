@@ -12,8 +12,23 @@ module ContextHelper
   # Because it returns the Snippet, it can also be used to help find child content :
   #   context(:news).children.last #=> Snippet(:parent => Snippet(:news))
   #
-  def context(snippet_name, options={})
-    Context::Snippet.find_by_name(snippet_name)
+  # Finally, it can be called with a block like so:
+  #   <%= context(:sidebar) do |sidebar| %>
+  #     <h1><%= sidebar.name %></h1>
+  #     <%= sidebar %>
+  #   <% end %>
+  #
+  # The block will be evaluated only if the Snippet can be found.
+  #
+  def context(snippet_name, options={}, &block)
+    snippet=Context::Snippet.find_by_name(snippet_name)
+    if block.nil? then
+      snippet
+    else
+      if snippet then
+        capture(snippet, &block)
+      end
+    end
   end
 
   # Returns the content of the Snippet inside of a HTML element.

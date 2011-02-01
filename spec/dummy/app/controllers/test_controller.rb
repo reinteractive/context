@@ -10,4 +10,10 @@ class TestController < ApplicationController
       wants.html
     end
   end
+
+  def context_block
+    respond_to do |wants|
+      wants.html
+    end
+  end
 end

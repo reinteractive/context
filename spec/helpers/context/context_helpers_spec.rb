@@ -21,6 +21,18 @@ describe Context::ContextHelper do
     it "should return nil if the Snippet can't be found" do
       helper.context(:sidebar).should be_nil
     end
+
+    context "with a block" do
+      it "should provide the context as the first argument" do
+        snippet=Context::Snippet.new(:name => 'sidebar')
+        Context::Snippet.should_receive(:find_by_name).with(:sidebar).and_return(snippet)
+        helper.context(:sidebar) do |sidebar|
+          sidebar.should == snippet
+        end
+      end
+
+      it "should return nothing if the Snippet can't be found"
+    end
   end
 
   describe "context_tag" do
