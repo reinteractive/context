@@ -15,6 +15,7 @@ class Context::Snippet < ActiveRecord::Base
 
   # Returns true if format identifies the content as HTML
   def is_html?
-    format == 'text/html'
+    # NOTE: Removing "self." causes a strange ActionView::Template::Error (too few arguments) in production
+    self.format == 'text/html'
   end
 end
