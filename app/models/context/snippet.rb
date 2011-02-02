@@ -16,6 +16,8 @@ class Context::Snippet < ActiveRecord::Base
   before_validation :generate_slug_if_blank
   before_save :update_cached_path
 
+  validates :name, :presence => true
+
   # Returns the body in HTML format, based upon the format field.
   def to_html
     case
@@ -50,6 +52,6 @@ private
   # before_validation
   # Generates a suitable slug from the name if the slug is left blank
   def generate_slug_if_blank
-    self.slug = self.name.strip.downcase.gsub(/[^A-Z0-9\-_]/i, '-').gsub(/-{2,}/,'-') if self.slug.blank?
+    self.slug = self.name.to_s.strip.downcase.gsub(/[^A-Z0-9\-_]/i, '-').gsub(/-{2,}/,'-') if self.slug.blank?
   end
 end
