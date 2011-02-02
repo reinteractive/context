@@ -22,5 +22,7 @@ describe Context::PagesController do
         get :show, :path => 'foo/bar'
       }.should raise_exception(AbstractController::ActionNotFound)
     end
+
+    it "should only render published pages"
   end
 end

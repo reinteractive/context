@@ -6,6 +6,9 @@
 # the layout methods.
 class Context::Page < Context::Snippet
 
+  scope :published, where(:published => true)
+  scope :draft, where(:published => false)
+
   # Returns the layout that should be rendered when shown.
   # This is provided so as that subclasses can force the page to show in a specific layout.
   # For example, if there is a "Faq" class that inherits from Page, it can always show in the "faq" layout by

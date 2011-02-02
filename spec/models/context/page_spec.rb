@@ -10,6 +10,9 @@ describe Context::Snippet do
     @page.path.should == 'test-page'
   end
 
+  it "should provide a .published scope"
+  it "should provide a .draft scope"
+
   context "instance" do
     before(:each) do
       @page=Context::Page.create!(:name => 'Test Page', :body => 'I am a test page!', :slug => 'test_page')
