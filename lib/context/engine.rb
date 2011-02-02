@@ -1,6 +1,7 @@
 require 'rails'
 require 'context/configuration'
 require 'context/helpers'
+require 'context/controller_helper'
 
 module Context
   class Engine < Rails::Engine
@@ -36,8 +37,9 @@ module Context
     # Configure sensitive parameters which will be filtered from the log file.
     #config.filter_parameters += [:password]
 
-    initializer 'context.helper' do |app|
+    initializer 'context.helpers' do |app|
       ActionView::Base.send :include, Context::ContextHelper
+      ApplicationController.send :include, Context::ControllerHelper
     end
 
     #initializer 'context.controller' do |app|

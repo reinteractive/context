@@ -17,8 +17,7 @@ class PagesController < Context::ApplicationController
 
 private
   def find_page_by_path
-    @path=params[:path]
-    @page=Page.find_by_path(@path)
+    @page=context_page
     if @page.nil? then
       raise ActionController::UnknownAction
       return false
