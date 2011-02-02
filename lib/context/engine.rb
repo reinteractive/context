@@ -39,7 +39,12 @@ module Context
 
     initializer 'context.helpers' do |app|
       ActionView::Base.send :include, Context::ContextHelper
-      ApplicationController.send :include, Context::ControllerHelper
+    end
+
+    initializer 'context.controller' do |app|
+      ActiveSupport.on_load(:action_controller) do
+        include Context::ControllerHelper
+      end
     end
 
     #initializer 'context.controller' do |app|
