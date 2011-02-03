@@ -51,4 +51,10 @@ describe Context::Snippet do
       @snippet.is_html?.should === false
     end
   end
+
+  describe "/ operator" do
+    it "should concatenate the path with a string" do
+      (@snippet/"foo/bar").should == "#{@snippet.path}/foo/bar"
+    end
+  end
 end

@@ -35,6 +35,19 @@ class Context::Snippet < ActiveRecord::Base
     self.format == 'text/html'
   end
 
+  # Concatenates the Snippet's path.
+  #
+  #   snippet=Context::Snippet.first # => #<Context::Snippet id: 1, name: "test", ...,  slug: "test", path: "test">
+  #   snippet/"foo/bar" # => "test/foo/bar"
+  #
+  # This is handy in views where you want to find a child of the current page by it's slug:
+  #
+  #   <%= context(@page/'sidebar') %>
+  #
+  def /(other)
+    self.path + '/' + other
+  end
+
   # before_save
   # Updates the path attribute based upon that of the parent
   def update_cached_path(force_parent_path=nil)
