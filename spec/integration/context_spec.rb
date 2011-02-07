@@ -20,10 +20,11 @@ describe "context()" do
     end
 
     it "should correctly escape HTML content" do
-      @snippet.update_attributes(:format => 'text/html', :body => '<b>HTML <!-- Content --></b>')
+      html = '<b>HTML <!-- Content --></b>'
+      @snippet.update_attributes(:format => 'text/html', :body => html)
       visit context_path
       page.body.should_not be_blank
-      page.body.should =~ %r{<b>HTML <!-- Content --></b>}
+      page.body.should =~ %r{#{html}}
     end
   end
 
