@@ -13,9 +13,8 @@ module ControllerHelper
   #     end
   #   end
   def context_page(path=nil)
-    path=params[:path] if path.nil?
     # TODO: Should restrict to published pages
-    Page.find_by_path(path)
+    Page.find_by_path(path ||= params[:path])
   end
 
 end
