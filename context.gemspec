@@ -20,15 +20,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sqlite3-ruby'
 
   s.add_development_dependency 'capybara',             "~> 0.3.9"
-  s.add_development_dependency "capybara-envjs",       "~> 0.1.6"
   s.add_development_dependency 'database_cleaner',     "~> 0.5.2"
   s.add_development_dependency "cucumber-rails",       "~> 0.3.2"
   s.add_development_dependency "rspec-rails",          "~> 2.0.0"
   s.add_development_dependency "launchy",              "~> 0.3.7"
-  s.add_development_dependency "selenium-webdriver",   "~> 0.0.29"
   s.add_development_dependency "autotest-rails",       "~> 4.1.0"
-  s.add_development_dependency "shoulda",              "~> 2.11.3"
   s.add_development_dependency "machinist",            "~> 1.0.6"
   s.add_development_dependency "faker",                "~> 0.3.1"
-  s.add_development_dependency "ruby-debug"
 end
