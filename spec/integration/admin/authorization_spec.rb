@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Admin panel, pages" do
+describe "Admin panel, authorization" do
   before do
     create_page!(:root)
   end
