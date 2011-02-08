@@ -51,7 +51,7 @@ class Context::Snippet < ActiveRecord::Base
   # before_save
   # Updates the path attribute based upon that of the parent
   def update_cached_path(force_parent_path=nil)
-    if force_parent_path || self.slug_changed? then
+    if (force_parent_path || self.slug_changed?) && !path_changed? then
       parent_path = force_parent_path || self.parent.try(:path)
       self.path=[ parent_path, self.slug ].compact.join('/')
       self.save if force_parent_path
