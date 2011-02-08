@@ -35,7 +35,6 @@ describe "Admin panel, pages" do
 
       it "accesses the admin panel" do
         visit "/context/admin"
-        p page.body
         assert_seen("Welcome to Context's admin panel.")
       end
     end
