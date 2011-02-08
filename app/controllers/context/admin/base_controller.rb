@@ -8,7 +8,6 @@ class Context::Admin::BaseController < ApplicationController
   private
   
   def context_admin_required
-    p "CALLING CONTEXT ADMIN REQUIRED"
     if !current_user.try(:context_admin)
       flash[:notice] = "You must be an admin to access that area."
       redirect_to '/'
