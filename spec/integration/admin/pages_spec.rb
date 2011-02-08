@@ -5,8 +5,8 @@ describe "Admin panel, pages" do
     create_page!(:root)
   end
   
-  context "no user" do
-    it "should render correctly from the slug" do
+  context "anonymous user" do
+    it "cannot access the admin panel" do
       visit "/context/admin"
       assert_seen("You must be an admin to access that area.")
     end
