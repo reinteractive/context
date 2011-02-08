@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   # TODO: Probably remove these down the track???
   namespace :context do
+
+    namespace :admin do
+      root :to => "base#index"
+    end
+
     resource :pages, :except => :show
     match "drafts/*path", :to => 'context/pages#show'
   end
