@@ -21,8 +21,6 @@ private
     if @page.nil? then
       raise ActionController::UnknownAction
       return false
-    else
-      return true
     end
   end
 
