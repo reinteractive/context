@@ -17,8 +17,4 @@ class Context::Page < Context::Snippet
   def layout
     true
   end
-  
-  def to_param
-    path
-  end
 end
