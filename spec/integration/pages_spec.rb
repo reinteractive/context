@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe "Pages" do
   before(:each) do
-    @page=Context::Page.create!(:name => 'Test Page', :body => 'I am a test page!', :slug => 'test_page')
+    @page=Context::Page.create!(:name      => 'Test Page', 
+                                :body      => 'I am a test page!', 
+                                :slug      => 'test_page',
+                                :published => true)
   end
 
   it "should render correctly from the slug" do
@@ -27,6 +30,14 @@ describe "Pages" do
   it "should raise the normal 404 when the Page can't be found" do
     lambda {
       visit "/a_missing_test_page"
+    }.should raise_exception(AbstractController::ActionNotFound)
+  end
+  
+  it "should raise the normal 4040 when the page is not published" do
+    @page.update_attribute(:published, false)
+    @page.save
+    lambda {
+      visit @page.path
     }.should raise_exception(AbstractController::ActionNotFound)
   end
 

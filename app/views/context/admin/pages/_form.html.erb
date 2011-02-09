@@ -19,7 +19,10 @@
   <%= f.select :parent_id, @pages.map { |p| [p.name, p.id] }, :include_blank => true %>
 </p>
 
-
+<p>
+  <%= f.check_box :published %>
+  <%= f.label :published, "Published?" %>
+</p>
 
 <p>
   <%= f.label :body %>

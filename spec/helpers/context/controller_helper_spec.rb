@@ -7,7 +7,10 @@ end
 describe Context::ControllerHelper do
   describe "context_page" do
     before(:each) do
-      @page=Context::Page.create!(:name => 'Test Page', :body => 'I am a test page!', :slug => 'test_page')
+      @page=Context::Page.create!(:name      => 'Test Page', 
+                                  :body      => 'I am a test page!',
+                                  :slug      => 'test_page',
+                                  :published => true)
       @controller=ControllerHelperTestController.new
     end
 
