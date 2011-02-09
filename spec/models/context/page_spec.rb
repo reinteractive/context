@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Context::Snippet do
+describe Context::Page do
 
   it "should require a name"
 
@@ -10,7 +10,11 @@ describe Context::Snippet do
     @page.path.should == 'test-page'
   end
 
-  it "should provide a .published scope"
+  it "should provide a .published scope" do
+    page =
+    Context::Page.published  
+  end
+  
   it "should provide a .draft scope"
 
   context "instance" do
