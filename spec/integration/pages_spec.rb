@@ -35,4 +35,8 @@ describe "Pages" do
     visit "/test_page"
     page.body.should =~ /CUSTOM VIEW TEMPLATE/
   end
+  
+  it "generates the correct path" do
+    @page.path.should eql("test_page")
+  end
 end

@@ -17,4 +17,8 @@ class Context::Page < Context::Snippet
   def layout
     true
   end
+  
+  def to_param
+    slug
+  end
 end
