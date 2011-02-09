@@ -14,7 +14,7 @@ def create_page!(name)
                             :body => "<h1>Portfolio</h1>
                                       Look at the pretty things!")
   else
-    puts "I don't know what that page is.
+    raise "I don't know what the #{name} page is.
           Tell me in spec/support/page_generators.rb"
   end
 end
