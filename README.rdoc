@@ -31,7 +31,7 @@ This will create the database tables needed for context to work, you can edit th
 
   rake db:migrate
 
-And then you can fire up your rails server and can navigate to /admin/context/
+And then you can fire up your rails server and can navigate to /context/admin
 
 == Development
 
