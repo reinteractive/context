@@ -6,7 +6,7 @@ describe "Admin panel, authorization" do
   end
 
   def assert_denied_access
-    visit "/context/admin"
+    visit context_admin_root_path
     assert_seen("You must be an admin to access that area.")
     page.current_url.should eql("http://www.example.com/")
   end
