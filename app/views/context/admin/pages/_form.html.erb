@@ -1,0 +1,29 @@
+<%= f.error_messages %>
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</p>
+
+<p>
+  <%= f.label :path %>
+  <%= f.text_field :path %>
+</p>
+
+<p>
+  <%= f.label :format %>
+  <%= f.select :format, [["HTML", "text/html"], ["Text", "text/plain"]] %>
+</p>
+
+<p>
+  <%= f.label :parent_id %>
+  <%= f.select :parent_id, @pages.map { |p| [p.name, p.id] } %>
+</p>
+
+
+
+<p>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+</p>
+
+<%= f.submit %>

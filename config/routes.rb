@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root :to => "base#index"
-      resources :pages
+      resources :pages, :constraints => { :id => /.*/ }
     end
 
     resource :pages, :except => :show
@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   root :to => 'context/pages#show'
-  match '*path', :to => 'context/pages#show'
+  match '*path', :to => 'context/pages#show', :as => :context_page
 end

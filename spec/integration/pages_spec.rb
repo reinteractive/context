@@ -39,4 +39,12 @@ describe "Pages" do
   it "generates the correct path" do
     @page.path.should eql("test_page")
   end
+  
+  it "allows for custom page paths" do
+    @page = Context::Page.create!(:name => 'Test Page', 
+                                  :body => 'I am a test page!', 
+                                  :slug => 'test_page',
+                                  :path => "not-so-sluggish")
+    @page.path.should eql("not-so-sluggish")
+  end
 end

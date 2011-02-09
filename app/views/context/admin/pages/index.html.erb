@@ -1,7 +1,9 @@
 <h2>Pages</h2>
 
+<%= link_to "New Page", new_context_admin_page_url %>
+
 <ul id='pages'>
   <% @pages.each do |page| %>
-    <li><%= link_to page.name, context_admin_page_url(page) %></li>
+    <li><%= link_to page.name, context_admin_page_url(page.path) %> - <%= page_url(page) %></li>
   <% end %>
 </ul>

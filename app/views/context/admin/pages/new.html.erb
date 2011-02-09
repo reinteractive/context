@@ -1,0 +1,5 @@
+<h2>New Page</h2>
+
+<%= form_for @page, :url => context_admin_pages_url do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+<% end %>

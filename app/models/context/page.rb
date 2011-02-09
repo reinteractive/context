@@ -19,6 +19,6 @@ class Context::Page < Context::Snippet
   end
   
   def to_param
-    slug
+    path
   end
 end
