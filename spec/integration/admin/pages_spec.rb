@@ -46,4 +46,9 @@ describe "Admin panel, pages" do
     click '/portfolio/2010'
     assert_seen("Showing off stuff from 2010")
   end
+  
+  it "cannot create a page under root"
+    # Doing so will generate an incorrect path of something like //contact-us.
+  
+  
 end
