@@ -16,7 +16,7 @@
 
 <p>
   <%= f.label :parent_id %>
-  <%= f.select :parent_id, @pages.map { |p| [p.name, p.id] } %>
+  <%= f.select :parent_id, @pages.map { |p| [p.name, p.id] }, :include_blank => true %>
 </p>
 
 
