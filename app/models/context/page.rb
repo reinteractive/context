@@ -8,6 +8,8 @@ class Context::Page < Context::Snippet
 
   scope :published, where(:published => true)
   scope :draft, where(:published => false)
+  
+  validates :name, :presence => true
 
   # Returns the layout that should be rendered when shown.
   # This is provided so as that subclasses can force the page to show in a specific layout.

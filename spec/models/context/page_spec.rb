@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe Context::Page do
 
-  it "should require a name"
+  it "should require a name" do
+    page = Context::Page.new
+    page.valid?.should be_false
+    page.errors["name"].any?.should be_true
+  end
 
   it "should generate a slug it's name if left blank" do
     @page=Context::Page.create!(:name => 'Test Page', :body => 'I am a test page!', :slug => nil)
