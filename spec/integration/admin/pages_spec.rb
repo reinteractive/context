@@ -15,7 +15,7 @@ describe "Admin panel, pages" do
   it "displays a list of pages, able to view one" do
     page.should have_css("h2", :text => "Pages")
     click 'Home'
-    page.current_url.should eql("http://www.example.com/context/admin/pages/home")
+    page.current_url.should eql("http://www.example.com/context/admin/pages/1")
   end
   
   it "creates a new page" do

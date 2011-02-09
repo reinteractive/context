@@ -4,7 +4,7 @@ class Context::Admin::PagesController < Context::Admin::BaseController
   end
   
   def show
-    @page = Context::Page.find_by_slug!(params[:id])
+    @page = Context::Page.find(params[:id])
   end
   
   def new
