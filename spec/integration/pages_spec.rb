@@ -54,8 +54,7 @@ describe "Pages" do
   it "allows for custom page paths" do
     @page = Context::Page.create!(:name => 'Test Page', 
                                   :body => 'I am a test page!', 
-                                  :slug => 'test_page',
-                                  :path => "not-so-sluggish")
+                                  :slug => 'not-so-sluggish')
     @page.path.should eql("not-so-sluggish")
   end
 end
