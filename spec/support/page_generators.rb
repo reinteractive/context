@@ -3,9 +3,16 @@ def create_page!(name)
     when 'root'
       Context::Page.create!(
                             :name => "Home",
-                            :path => "/",
+                            :slug => "",
                             :format => "text/plain",
                             :body => "Welcome to context.")
+    when 'portfolio'
+      Context::Page.create!(
+                            :name => "Portfolio",
+                            :slug => "portfolio",
+                            :format => "text/html", 
+                            :body => "<h1>Portfolio</h1>
+                                      Look at the pretty things!")
   else
     puts "I don't know what that page is.
           Tell me in spec/support/page_generators.rb"
