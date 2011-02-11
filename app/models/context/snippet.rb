@@ -82,6 +82,6 @@ private
   # before_validation
   # Generates a suitable slug from the name if the slug is left blank
   def generate_slug_if_blank
-    self.slug = self.name.to_s.strip.downcase.gsub(/[^A-Z0-9\-_]/i, '-').gsub(/-{2,}/,'-') if self.slug.blank?
+    self.slug = self.name.to_s.strip.downcase.gsub(/[^A-Z0-9\-_]/i, '-').gsub(/-{2,}/,'-').gsub(/-$/, '') if self.slug.blank?
   end
 end
