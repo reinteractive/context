@@ -12,7 +12,7 @@
 #
 class Context::Snippet < ActiveRecord::Base
   before_validation :generate_slug_if_blank
-  after_save :update_cached_path
+  before_save :update_cached_path
 
   has_ancestry
 
@@ -72,8 +72,10 @@ class Context::Snippet < ActiveRecord::Base
       parent_path = force_parent_path || self.parent.try(:context_path)
       self.context_path=Context::Page.prefix_slash([ parent_path, self.slug ].compact.join('/'))
       self.save if force_parent_path
-      self.children.each do |child|
-        child.update_cached_path(self.context_path)
+      unless self.new_record? then
+        self.children.each do |child|
+          child.update_cached_path(self.context_path)
+        end
       end
     end
   end
