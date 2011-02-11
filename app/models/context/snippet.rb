@@ -16,6 +16,9 @@ class Context::Snippet < ActiveRecord::Base
   before_validation :generate_slug_if_blank
   before_save :update_cached_path
 
+  scope :published, where(:published => true)
+  scope :draft, where(:published => false)
+
   validates :name, :presence => true
 
   # Returns the body in HTML format, based upon the format field.

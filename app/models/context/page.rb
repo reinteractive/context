@@ -5,9 +5,6 @@
 # application layout. This can be changed in your Page subclasses by overloading
 # the layout methods.
 class Context::Page < Context::Snippet
-
-  scope :published, where(:published => true)
-  scope :draft, where(:published => false)
   
   validates :name, :presence => true
 
