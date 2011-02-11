@@ -14,7 +14,7 @@ module Context
     #   end
     def context_page(path=nil)
       # TODO: Should restrict to published pages  
-      Page.published.find_by_path(path || params[:path] || request.fullpath)
+      Page.locate(path || params[:path] || request.fullpath)
     end
 
   end

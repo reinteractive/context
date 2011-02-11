@@ -14,7 +14,7 @@ describe Context::ContextHelper do
   describe "context" do
     it "should find the Snippet by name and return it directly" do
       snippet=Context::Snippet.new(:name => 'sidebar')
-      Context::Snippet.should_receive(:find_by_path).with(:sidebar).and_return(snippet)
+      Context::Snippet.should_receive(:locate).with(:sidebar).and_return(snippet)
       helper.context(:sidebar).should == snippet
     end
 
@@ -25,7 +25,7 @@ describe Context::ContextHelper do
     context "with a block" do
       it "should provide the context as the first argument" do
         snippet=Context::Snippet.new(:name => 'sidebar')
-        Context::Snippet.should_receive(:find_by_path).with(:sidebar).and_return(snippet)
+        Context::Snippet.should_receive(:locate).with(:sidebar).and_return(snippet)
         helper.context(:sidebar) do |sidebar|
           sidebar.should == snippet
         end
@@ -39,7 +39,7 @@ describe Context::ContextHelper do
     it "should find the Snippet by name and return it wrapped in the element" do
       snippet=Context::Snippet.new(:name => 'sidebar')
       snippet.should_receive(:to_s).and_return("Content")
-      Context::Snippet.should_receive(:find_by_path).with(:sidebar).and_return(snippet)
+      Context::Snippet.should_receive(:locate).with(:sidebar).and_return(snippet)
       helper.context_tag(:div, :sidebar).should == "<div>Content</div>"
     end
 

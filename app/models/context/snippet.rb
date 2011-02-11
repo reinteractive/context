@@ -21,6 +21,20 @@ class Context::Snippet < ActiveRecord::Base
 
   validates :name, :presence => true
 
+  # Prefixes a URL with a forward slash if it doesn't already have one
+  def self.prefix_slash(url)
+    url = if /^\//.match(url)
+      url
+    else
+      "/" + url
+    end
+  end
+
+  # Locate a published snippet by its path
+  def self.locate(path)
+    self.published.find_by_path(prefix_slash(path.to_s))
+  end
+
   # Returns the body in HTML format, based upon the format field.
   def to_html
     case
@@ -56,7 +70,7 @@ class Context::Snippet < ActiveRecord::Base
   def update_cached_path(force_parent_path=nil)
     if (force_parent_path || self.slug_changed?) then
       parent_path = force_parent_path || self.parent.try(:path)
-      self.path=[ parent_path, self.slug ].compact.join('/')
+      self.path=Context::Page.prefix_slash([ parent_path, self.slug ].compact.join('/'))
       self.save if force_parent_path
       self.children.each do |child|
         child.update_cached_path(self.path)

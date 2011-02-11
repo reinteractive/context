@@ -21,7 +21,7 @@ module Context
     # The block will be evaluated only if the Snippet can be found.
     #
     def context(snippet_path, options={}, &block)
-      snippet=Context::Snippet.find_by_path(snippet_path)
+      snippet=Context::Snippet.locate(snippet_path)
       if block.nil? then
         snippet
       else

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "context()" do
   before(:each) do
-    @snippet=Context::Snippet.create!(:name => 'test', :body => 'I am a call to context!')
+    @snippet=Context::Snippet.create!(:name => 'test', :body => 'I am a call to context!', :published => true)
   end
 
   context "without a block" do
