@@ -17,7 +17,7 @@ describe "Pages" do
 
   it "should render with a custom layout if set by the subclass" do
     @page.should_receive(:layout).and_return('custom')
-    Context::Page.should_receive(:find_by_path).with('/test-page').and_return(@page)
+    Context::Page.should_receive(:find_by_context_path).with('/test-page').and_return(@page)
     visit "test-page"
     page.body.should_not be_blank
     # Make sure we are in the custom layout
@@ -36,7 +36,7 @@ describe "Pages" do
     @page.update_attribute(:published, false)
     @page.save
     lambda {
-      visit @page.path
+      visit @page.context_path
     }.should raise_exception(AbstractController::ActionNotFound)
   end
 
@@ -47,13 +47,13 @@ describe "Pages" do
   end
   
   it "generates the correct path" do
-    @page.path.should eql("/test-page")
+    @page.context_path.should eql("/test-page")
   end
   
   it "allows for custom page paths" do
     @page = Context::Page.create!(:name => 'Test Page', 
                                   :body => 'I am a test page!', 
                                   :slug => 'not-so-sluggish')
-    @page.path.should eql("/not-so-sluggish")
+    @page.context_path.should eql("/not-so-sluggish")
   end
 end

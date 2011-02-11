@@ -11,10 +11,10 @@
 # "sidebar/links" for example.
 #
 class Context::Snippet < ActiveRecord::Base
-  acts_as_nested_set
-
   before_validation :generate_slug_if_blank
-  before_save :update_cached_path
+  after_save :update_cached_path
+
+  has_ancestry
 
   scope :published, where(:published => true)
   scope :draft, where(:published => false)
@@ -32,7 +32,7 @@ class Context::Snippet < ActiveRecord::Base
 
   # Locate a published snippet by its path
   def self.locate(path)
-    self.published.find_by_path(prefix_slash(path.to_s))
+    self.published.find_by_context_path(prefix_slash(path.to_s))
   end
 
   # Returns the body in HTML format, based upon the format field.
@@ -62,18 +62,18 @@ class Context::Snippet < ActiveRecord::Base
   #   <%= context(@page/'sidebar') %>
   #
   def /(other)
-    self.path + '/' + other
+    self.context_path + '/' + other
   end
 
   # before_save
   # Updates the path attribute based upon that of the parent
   def update_cached_path(force_parent_path=nil)
     if (force_parent_path || self.slug_changed?) then
-      parent_path = force_parent_path || self.parent.try(:path)
-      self.path=Context::Page.prefix_slash([ parent_path, self.slug ].compact.join('/'))
+      parent_path = force_parent_path || self.parent.try(:context_path)
+      self.context_path=Context::Page.prefix_slash([ parent_path, self.slug ].compact.join('/'))
       self.save if force_parent_path
       self.children.each do |child|
-        child.update_cached_path(self.path)
+        child.update_cached_path(self.context_path)
       end
     end
   end

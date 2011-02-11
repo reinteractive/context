@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~>3.0'
   # TODO: Resurrect this (and remove the vendored fork) once awesome_nested_set is Rails 3 compliant in mainline
   #s.add_dependency 'awesome_nested_set'
+  s.add_dependency 'ancestry'
 
   # For Dummy application
   s.add_development_dependency 'sqlite3-ruby'

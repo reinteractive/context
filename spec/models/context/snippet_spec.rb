@@ -53,8 +53,8 @@ describe Context::Snippet do
   end
 
   describe "/ operator" do
-    it "should concatenate the path with a string" do
-      (@snippet/"foo/bar").should == "#{@snippet.path}/foo/bar"
+    it "should concatenate the context_path with a string" do
+      (@snippet/"foo/bar").should == "#{@snippet.context_path}/foo/bar"
     end
   end
 end

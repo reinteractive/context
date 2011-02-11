@@ -37,6 +37,12 @@ module Context
     # Configure sensitive parameters which will be filtered from the log file.
     #config.filter_parameters += [:password]
 
+    # TODO: I'm not sure this is really the best way to do this... Seems kinda ugly...
+    #       We do want it to load before the Context models are loaded though...
+    initializer 'context.ancestry' do |app|
+      require 'ancestry'
+    end
+
     initializer 'context.helpers' do |app|
       ActionView::Base.send :include, Context::ContextHelper
     end
