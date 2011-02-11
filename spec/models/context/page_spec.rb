@@ -14,12 +14,18 @@ describe Context::Page do
     @page.path.should == 'test-page'
   end
 
-  it "should provide a .published scope" do
-    page =
-    Context::Page.published  
+  it "should provide a .published and .draft scope" do
+    published     = Context::Page.create!(:name => "Published", :published => true)
+    not_published = Context::Page.create!(:name => "Published", :published => false)
+    
+    published_pages = Context::Page.published
+    published_pages.should include(published)
+    published_pages.should_not include(not_published)
+    
+    draft_pages = Context::Page.draft
+    draft_pages.should_not include(published)
+    draft_pages.should include(not_published)
   end
-  
-  it "should provide a .draft scope"
 
   context "instance" do
     before(:each) do
