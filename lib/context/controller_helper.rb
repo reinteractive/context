@@ -13,8 +13,15 @@ module Context
     #     end
     #   end
     def context_page(path=nil)
-      # TODO: Should restrict to published pages  
-      Page.locate(path || params[:path] || request.fullpath)
+      # TODO: Should restrict to published pages
+      klasses = [Context::Page] << Context::Page.descendants
+      page = nil
+
+      klasses.flatten.each do |klass|
+        page = klass.locate(path || params[:path] || request.fullpath)
+      end
+
+      page
     end
 
   end
