@@ -1,2 +1,0 @@
-echo "Loading Context engine console"
-irb -r"`pwd`/spec/dummy/config/environment.rb"
