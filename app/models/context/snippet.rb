@@ -32,7 +32,7 @@ class Context::Snippet < ActiveRecord::Base
 
   # Locate a published snippet by its path
   def self.locate(path)
-    self.published.find_by_context_path(prefix_slash(path.to_s))
+    Context::Snippet.published.find_by_context_path(prefix_slash(path.to_s))
   end
 
   # Returns the body in HTML format, based upon the format field.
