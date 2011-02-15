@@ -57,4 +57,8 @@ describe Context::Snippet do
       (@snippet/"foo/bar").should == "#{@snippet.context_path}/foo/bar"
     end
   end
+
+  describe ".locate" do
+    it "should only return published Snippets"
+  end
 end

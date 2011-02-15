@@ -1,0 +1,5 @@
+<h2>Edit Page</h2>
+
+<%= form_for @page, :url => context_admin_page_url(@page), :method => :put do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+<% end %>

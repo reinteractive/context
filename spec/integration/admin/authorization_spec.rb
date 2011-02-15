@@ -3,6 +3,13 @@ require 'spec_helper'
 describe "Admin panel, authorization" do
   before do
     create_page!(:root)
+    # TODO: Clean this up once we aren't hacking ApplicationController using class_eval
+    logout!
+  end
+
+  # TODO: Clean this up once we aren't hacking ApplicationController using class_eval
+  after(:each) do
+    logout!
   end
 
   def assert_denied_access

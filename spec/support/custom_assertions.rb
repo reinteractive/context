@@ -1,3 +1,3 @@
 def assert_seen(string)
-  page.has_content?(string).should be_true
+  page.body.should =~ Regexp.new(string)
 end

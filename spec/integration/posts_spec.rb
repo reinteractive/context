@@ -9,7 +9,7 @@ describe "posts" do
   end
 
   it "is found as an object as a subclass of Context::Page" do
-    visit post.path
+    visit post.context_path
     assert_seen "This is the body of the 'Poster Child' page"
   end
 end

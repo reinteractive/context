@@ -7,6 +7,11 @@ describe "Admin panel, pages" do
     login!(:admin => true)
     visit context_admin_pages_path
   end
+
+  # TODO: Clean this up once we aren't hacking ApplicationController using class_eval
+  after do
+    logout!
+  end
   
   def assert_home
     page.current_url.should eql(context_admin_pages_url)
