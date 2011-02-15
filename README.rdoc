@@ -22,11 +22,11 @@ You instal context through adding the gem to your gemfile:
 
   gem "context"
 
-Once you bundle install, you will need to run the context generator:
+Once you bundle install, you will need to generate the migrations:
 
-  rails generate context
+  rake context:install
 
-This will create the database tables needed for context to work, you can edit these, if you do need to change the table name, be sure to update config/initializers/context.rb with the new table names.  Once done:
+This will create the database tables needed for context to work. Once done:
 
   rake db:migrate
 

@@ -7,11 +7,16 @@ class CreateSnippets < ActiveRecord::Migration
       t.text :cached_html
       t.boolean :published
       t.integer :parent_id
-      t.integer :lft
-      t.integer :rgt
+      t.string :type
+      t.string :slug, :default => nil, :null => true
+      t.string :context_path, :default => nil, :null => true
+      t.string :ancestry
 
       t.timestamps
     end
+
+    add_index :snippets, :context_path
+    add_index :snippets, :ancestry
   end
 
   def self.down
