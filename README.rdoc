@@ -1,6 +1,8 @@
 = Context
 
-Context is a content management system for Rails 3.
+Context will be a content management system for Rails 3 created by [RubyX](http://rubyx.com/)
+
+It is NOT production ready!  Some of the features outlined below are still a wish list.
 
 == Overview
 
