@@ -4,7 +4,7 @@ describe "Pages" do
   before(:each) do
     @page=Context::Page.create!(:name      => 'Test Page', 
                                 :body      => 'I am a test page!',
-                                :published => true)
+                                :state     => 'published')
   end
 
   it "should render correctly from the slug" do
@@ -32,8 +32,8 @@ describe "Pages" do
     }.should raise_exception(AbstractController::ActionNotFound)
   end
   
-  it "should raise the normal 4040 when the page is not published" do
-    @page.update_attribute(:published, false)
+  it "should raise the normal 404 when the page is not published" do
+    @page.update_attribute(:state, 'draft')
     @page.save
     lambda {
       visit @page.context_path

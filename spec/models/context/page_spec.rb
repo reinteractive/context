@@ -25,16 +25,16 @@ describe Context::Page do
   end
 
   it "should provide a .published and .draft scope" do
-    published     = Context::Page.create!(:name => "Published", :published => true)
-    not_published = Context::Page.create!(:name => "Published", :published => false)
+    published     = Context::Page.create!(:name => "Published", :state => "published")
+    draft         = Context::Page.create!(:name => "Draft", :state => "draft")
     
     published_pages = Context::Page.published
     published_pages.should include(published)
-    published_pages.should_not include(not_published)
+    published_pages.should_not include(draft)
     
     draft_pages = Context::Page.draft
     draft_pages.should_not include(published)
-    draft_pages.should include(not_published)
+    draft_pages.should include(draft)
   end
 
   context "instance" do

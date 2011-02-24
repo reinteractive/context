@@ -28,7 +28,7 @@ describe "Admin panel, pages" do
     fill_in 'Name', :with => "Contact Us"
     select 'HTML', :from => "Format"
     fill_in 'Body', :with => "Please get in contact with us by following..."
-    check 'Published?'
+    select 'Published', :from => "State"
     click 'Create Page'
     assert_seen("A new page has been created.")
     assert_home
@@ -43,7 +43,7 @@ describe "Admin panel, pages" do
     select 'HTML', :from => "Format"
     select 'Portfolio', :from => "Parent"
     fill_in 'Body', :with => "Showing off stuff from 2010"
-    check 'Published?'
+    select 'Published', :from => "State"
     click 'Create Page'
 
     assert_seen("A new page has been created.")

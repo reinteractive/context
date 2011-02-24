@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe "context_tag()" do
   before(:each) do
-    @snippet=Context::Snippet.create!(:name => 'test', :body => 'I am a call to context!', :published => true)
+    @snippet=Context::Snippet.create!(:name => 'test', 
+                                      :body => 'I am a call to context!',
+                                      :state => 'published')
   end
 
   it "should return some content" do

@@ -5,7 +5,7 @@ describe "posts" do
   let(:post) do
     Post.create!(:name      => "Poster Child",
                  :body      => "This is the body of the 'Poster Child' page",
-                 :published => true)
+                 :state     => "published")
   end
 
   it "is found as an object as a subclass of Context::Page" do

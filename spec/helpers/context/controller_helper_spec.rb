@@ -10,7 +10,7 @@ describe Context::ControllerHelper do
       @page=Context::Page.create!(:name      => 'Test Page', 
                                   :body      => 'I am a test page!',
                                   :slug      => 'test_page',
-                                  :published => true)
+                                  :state     => "published")
       @controller=ControllerHelperTestController.new
     end
 

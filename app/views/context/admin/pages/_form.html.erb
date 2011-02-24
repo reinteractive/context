@@ -20,8 +20,8 @@
 </p>
 
 <p>
-  <%= f.check_box :published %>
-  <%= f.label :published, "Published?" %>
+  <%= f.label :state %>
+  <%= f.select :state, [["Idea", "idea"], ["Draft", "draft"], ["Published", "published"]] %>
 </p>
 
 <p>
