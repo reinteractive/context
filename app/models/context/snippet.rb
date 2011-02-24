@@ -16,8 +16,9 @@ class Context::Snippet < ActiveRecord::Base
 
   has_ancestry
 
-  scope :published, where(:published => true)
-  scope :draft, where(:published => false)
+  scope :published, where(:state => "published")
+  scope :draft, where(:state => "draft")
+  scope :ideas, where(:state => "idea")
 
   validates :name, :presence => true
 
