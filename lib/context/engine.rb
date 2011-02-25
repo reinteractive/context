@@ -2,6 +2,7 @@ require 'rails'
 require 'context/configuration'
 require 'context/helpers'
 require 'context/controller_helper'
+require 'rdiscount'
 
 module Context
   class Engine < Rails::Engine
