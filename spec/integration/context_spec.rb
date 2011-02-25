@@ -28,6 +28,19 @@ describe "context()" do
       page.body.should_not be_blank
       page.body.should =~ %r{#{html}}
     end
+
+    it "should correctly parse Markdown content" do
+      markdown = <<-MD
+# This is markdown!
+Isn't it gorgeous?
+
+    this.is_some_code?
+      MD
+      @snippet.update_attributes(:format => 'text/markdown', :body => markdown)
+      visit context_path
+      page.body.should =~ %r{<h1>This is markdown!</h1>}
+      page.body.should =~ /<pre><code>this.is_some_code?(.*?)<\/code><\/pre>/m
+    end
   end
 
   context "with a block" do

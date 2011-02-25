@@ -4,6 +4,7 @@ PATH
     context (0.0.1)
       ancestry
       rails (~> 3.0)
+      rdiscount
 
 GEM
   remote: http://rubygems.org/
@@ -104,6 +105,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rdiscount (1.6.5)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
@@ -135,6 +137,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry
   autotest-rails (~> 4.1.0)
   capybara (~> 0.3.9)
   context!
@@ -143,5 +146,7 @@ DEPENDENCIES
   faker (~> 0.3.1)
   launchy (~> 0.3.7)
   machinist (~> 1.0.6)
+  rails (~> 3.0)
+  rdiscount
   rspec-rails (~> 2.0.0)
   sqlite3-ruby

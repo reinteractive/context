@@ -41,6 +41,8 @@ class Context::Snippet < ActiveRecord::Base
     case
     when self.is_html?
       self.body.html_safe
+    when self.is_markdown?
+      RDiscount.new(self.body).to_html.html_safe
     else
       self.body
     end
@@ -51,6 +53,10 @@ class Context::Snippet < ActiveRecord::Base
   def is_html?
     # NOTE: Removing "self." causes a strange ActionView::Template::Error (too few arguments) in production
     self.format == 'text/html'
+  end
+
+  def is_markdown?
+    self.format == 'text/markdown'
   end
 
   # Concatenates the Snippet's path.
