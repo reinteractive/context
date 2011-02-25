@@ -10,6 +10,8 @@ module RSpec::Rails
     include RSpec::Rails::TestUnitAssertionAdapter
     include ActionDispatch::Assertions
     include Capybara
+    # TODO: Why? This should be automatic
+    include Rails.application.routes.url_helpers
 
     module InstanceMethods
       def app
