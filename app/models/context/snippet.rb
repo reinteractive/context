@@ -43,12 +43,16 @@ class Context::Snippet < ActiveRecord::Base
     when self.is_html?
       self.body.html_safe
     when self.is_markdown?
-      RDiscount.new(self.body).to_html.html_safe
+      to_markdown.html_safe
     else
       self.body
     end
   end
   alias :to_s :to_html
+
+  def to_markdown
+    RDiscount.new(self.body).to_html
+  end
 
   # Returns true if format identifies the content as HTML
   def is_html?
