@@ -30,6 +30,7 @@ class Context::Snippet < ActiveRecord::Base
     else
       "/" + url
     end
+    url.gsub(/\/\//,'/')
   end
 
   # Locate a published snippet by its path
